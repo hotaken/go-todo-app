@@ -7,6 +7,7 @@
 - Docker
 - DataBase: Postgres
 - Migration files generation with migrate
+- Logging: <a href="https://github.com/sirupsen/logrus">sirupsen/logrus</a>
 - ...
 
 ### Docker
