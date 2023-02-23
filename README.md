@@ -7,7 +7,8 @@
 - Docker
 - DataBase: Postgres
 - Migration files generation with migrate
-- Logging: <a href="https://github.com/sirupsen/logrus">sirupsen/logrus</a>
+- Logging: <a href="https://github.com/sirupsen/logrus">logrus</a>
+- JWT: <a href="https://github.com/dgrijalva/jwt-go">jwt-go</a>
 - ...
 
 ### Docker
