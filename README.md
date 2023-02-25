@@ -14,9 +14,9 @@
 ### Docker
 Run postgres
 ```shell
-doker pull postgres
-doker run --name=todo-db -e POSTGRES_PASSWORD='postgres' -p 5436:5432 -d --rm postgres
-doker ps
+docker pull postgres
+docker run --name=todo-db -e POSTGRES_PASSWORD='postgres' -p 5436:5432 -d --rm postgres
+docker ps
 ```
 
 ### Migrate
@@ -35,8 +35,8 @@ migrate -path ./schema -database 'postgres://postgres:postgres@0.0.0.0:5436/post
 ```
 Check migration
 ```shell
-doker ps
-doker exec -it <id> powershell # /bin/bash
+docker ps
+docker exec -it <id> powershell # /bin/bash
     psql -U postgres
         \d
 ```
