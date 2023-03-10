@@ -6,7 +6,7 @@ import (
 	"github.com/hotaken/go-todo-app/pkg/handler"
 	"github.com/hotaken/go-todo-app/pkg/repository"
 	"github.com/hotaken/go-todo-app/pkg/service"
-	_ "github.com/jackc/pgx"
+	_ "github.com/jackc/pgx/v5/stdlib"
 	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
