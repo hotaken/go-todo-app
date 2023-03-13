@@ -15,6 +15,10 @@ Server will wait for postgres
 ```shell
 docker-compose up --build go-todo-app
 ```
+Stop
+```shell
+docker-compose down
+```
 
 ## Some my notes
 ### Docker
