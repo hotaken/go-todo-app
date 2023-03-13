@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/hotaken/go-todo-app"
+	"github.com/hotaken/go-todo-app/models"
 	"github.com/hotaken/go-todo-app/pkg/repository"
 )
 
@@ -14,7 +14,7 @@ func NewTodoItemService(repo repository.TodoItem, listRepo repository.TodoList) 
 	return &TodoItemService{repo: repo, listRepo: listRepo}
 }
 
-func (s *TodoItemService) Create(userId int, listId int, item todo.TodoItem) (int, error) {
+func (s *TodoItemService) Create(userId int, listId int, item models.TodoItem) (int, error) {
 	_, err := s.listRepo.GetById(userId, listId)
 	if err != nil {
 		return 0, err
@@ -23,11 +23,11 @@ func (s *TodoItemService) Create(userId int, listId int, item todo.TodoItem) (in
 	return s.repo.Create(listId, item)
 }
 
-func (s *TodoItemService) GetAll(userId, listId int) ([]todo.TodoItem, error) {
+func (s *TodoItemService) GetAll(userId, listId int) ([]models.TodoItem, error) {
 	return s.repo.GetAll(userId, listId)
 }
 
-func (s *TodoItemService) GetById(userId, itemId int) (todo.TodoItem, error) {
+func (s *TodoItemService) GetById(userId, itemId int) (models.TodoItem, error) {
 	return s.repo.GetById(userId, itemId)
 }
 
@@ -35,7 +35,7 @@ func (s *TodoItemService) Delete(userId, itemId int) error {
 	return s.repo.Delete(userId, itemId)
 }
 
-func (s *TodoItemService) Update(userId, itemId int, input todo.UpdateItemInput) error {
+func (s *TodoItemService) Update(userId, itemId int, input models.UpdateItemInput) error {
 	if err := input.Validate(); err != nil {
 		return err
 	}

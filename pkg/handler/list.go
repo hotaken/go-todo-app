@@ -2,7 +2,7 @@ package handler
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/hotaken/go-todo-app"
+	"github.com/hotaken/go-todo-app/models"
 	"net/http"
 	"strconv"
 )
@@ -13,7 +13,7 @@ func (h *Handler) createList(c *gin.Context) {
 		return
 	}
 
-	var input todo.TodoList
+	var input models.TodoList
 	if err := c.BindJSON(&input); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
@@ -31,7 +31,7 @@ func (h *Handler) createList(c *gin.Context) {
 }
 
 type getAllListsResponse struct {
-	Data []todo.TodoList `json:"data"`
+	Data []models.TodoList `json:"data"`
 }
 
 func (h *Handler) getAllLists(c *gin.Context) {
@@ -105,7 +105,7 @@ func (h *Handler) updateList(c *gin.Context) {
 		return
 	}
 
-	var input todo.UpdateListInput
+	var input models.UpdateListInput
 	if err := c.BindJSON(&input); err != nil {
 		newErrorResponse(c, http.StatusBadRequest, err.Error())
 		return

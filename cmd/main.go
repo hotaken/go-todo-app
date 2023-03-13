@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"github.com/hotaken/go-todo-app"
+	"github.com/hotaken/go-todo-app/pkg"
 	"github.com/hotaken/go-todo-app/pkg/handler"
 	"github.com/hotaken/go-todo-app/pkg/repository"
 	"github.com/hotaken/go-todo-app/pkg/service"
@@ -42,7 +42,7 @@ func main() {
 	services := service.NewService(repos)
 	handlers := handler.NewHandler(services)
 
-	server := new(todo.Server)
+	server := new(pkg.Server)
 	go func() {
 		if err := server.Run(viper.GetString("port"), handlers.InitRoutes()); err != nil {
 			logrus.Fatalf("error occured while running http server: %s", err.Error())
