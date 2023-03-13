@@ -10,7 +10,13 @@
 - Logging: <a href="https://github.com/sirupsen/logrus">logrus</a>
 - JWT: <a href="https://github.com/dgrijalva/jwt-go">jwt-go</a>
 - ...
+## Run app with docker-compose
+Server will wait for postgres
+```shell
+docker-compose up --build go-todo-app
+```
 
+## Some my notes
 ### Docker
 Run postgres
 ```shell

@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  go-todo-app:
+    build: ./
+    restart: always
+    command: ./go-todo-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_PASSWORD=postgres
+  db:
+    restart: always
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./schema/000001_init.up.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - .:/var/lib/postgresql/data
+    ports:
+      - "5436:5432"
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "$$POSTGRES_USER", "-d", "$$POSTGRES_DB" ]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+#  migrate:
+#    image: migrate/migrate
+#    restart: on-failure
+#    volumes:
+#      - ./schema:/migrations
+#    command: ["-path", "/migrations", "-database",  "postgres://postgres:postgres@db:5432/postgres?sslmode=disable", "up"]
+#    depends_on:
+#      - db
